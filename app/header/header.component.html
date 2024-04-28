@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand">Loan Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/api/addloanplans"
+                        [hidden]="!loginStatus()">Add</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/api/interestrates"
+                        [hidden]="!loginStatus()">Base Interest
+                        Rates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/api/loanplans"
+                        [hidden]="!loginStatus()">Loan Plans</a>
+                </li>
+            </ul>
+        </div>
+
+        <div>
+            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+
+                <li>
+                    <div class="d-grid gap-2 col-2">
+                        <button class="btn btn-light my-6" type="submit" routerLink="/login"
+                            [hidden]="loginStatus()">Login</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="d-grid gap-2 col-2">
+                        <button class="btn btn-light my-6" type="submit" (click)="logoutStatus()"
+                            *ngIf="loginStatus()==true">Logout</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- routerLink="/login"
+[hidden]="!loginStatus()" -->
