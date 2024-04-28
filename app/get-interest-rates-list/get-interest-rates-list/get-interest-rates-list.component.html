@@ -1,0 +1,21 @@
+<h3><span class="badge text-bg-secondary bg-gradient col-md-6 offset-md-3 mt-5">List of Base Interest Rates</span></h3>
+
+<div class="container mt-5 mb-5">
+  <table class="table table-responsive table-light table-bordered border-dark table-hover text-center">
+    <thead>
+      <tr class="table-secondary table-active text-white">
+        <th scope="col">Id</th>
+        <th scope="col">Loan Type</th>
+        <th scope="col">Base Interest Rate</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let baseInterestRates of baseInterestRatesArray">
+      <tr>
+        <td>{{ baseInterestRates.id }}</td>
+        <td>{{ baseInterestRates.loanType }}</td>
+        <td>{{ baseInterestRates.baseInterestRate }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
