@@ -1,0 +1,122 @@
+<div class="container mb-5 w-50">
+    <div class="row mb-5">
+        <div class="col mb-5">
+            <div *ngIf="showSuccessMessage" class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong>Loan Plan has updated!
+                <button (click)="removeMessage()" type="button" data-bs-dismiss="alert" aria-label="Close">x</button>
+            </div>
+            <form class="form-control row g-3 needs-validation mb-5" [formGroup]="updateLoanPlanForm"
+                (ngSubmit)="onSubmit()">
+                <h3><span class="badge text-bg-secondary bg-gradient col-md-6 offset-md-3 mt-4">Update Loan Plan</span>
+                </h3>
+                <div class="col-md-8 offset-md-2">
+                    <label for="planId" class="form-label">Plan Id</label>
+                    <input type="number" class="form-control" id="planId" formControlName="planId" name="planId"
+                        readonly>
+
+                </div>
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="planName" class="form-label">Plan Name</label>
+                    <input type="text" class="form-control" id="planName" formControlName="planName" name="planName"
+                        required [ngClass]="{error:getControl('planName').errors && getControl('planName').touched}">
+
+                    <div *ngIf="getControl('planName')?.errors && getControl('planName').touched">
+
+                        <small class="text-danger" *ngIf="getControl('planName').errors?.['pattern']">
+                            Plan Name is invalid, please enter valid Plan Name only using characters
+                        </small>
+
+                    </div>
+                </div>
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="principleAmount" class="form-label">Principle Amount</label>
+                    <input type="number" class="form-control" id="principleAmount" formControlName="principleAmount"
+                        name="principleAmount" readonly>
+                </div>
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="tenure" class="form-label">Tenure(in months)</label>
+                    <input type="number" class="form-control" id="tenure" formControlName="tenure" name="tenure"
+                        readonly>
+
+                </div>
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="interestRate" class="form-label">Interest Rate</label>
+                    <input type="number" class="form-control" id="interestRate" formControlName="interestRate"
+                        name="interestRate" readonly>
+
+                </div>
+                <div class="col-md-8 offset-md-2">
+                    <label for="interestAmount" class="form-label">Interest Amount</label>
+                    <input type="number" class="form-control" id="interestAmount" formControlName="interestAmount"
+                        name="interestAmount" readonly>
+
+                </div>
+                <div class="col-md-8 offset-md-2">
+                    <label for="totalPayable" class="form-label">Total Payable</label>
+                    <input type="number" class="form-control" id="totalPayable" formControlName="totalPayable"
+                        name="totalPayable" readonly>
+
+                </div>
+                <div class="col-md-8 offset-md-2">
+                    <label for="emi" class="form-label">EMI</label>
+                    <input type="number" class="form-control" id="emi" formControlName="emi" name="emi" readonly>
+
+                </div>
+                <div class="col-md-8 offset-md-2">
+                    <label for="planValidity" class="form-label">Plan Validity</label>
+                    <input type="date" class="form-control" formControlName="planValidity" id="planValidity"
+                        name="planValidity" min="{{currentDate | date:'yyyy-MM-dd'}}">
+                    <div *ngIf="getControl('planValidity')?.errors && getControl('planValidity').touched">
+                        <small class="text-danger" *ngIf="getControl('planValidity').errors?.['required']">
+                            Plan Validity is required
+                        </small>
+
+                    </div>
+                </div>
+                <div class="col-md-8 offset-md-2">
+                    <label for="planAddedOn" class="form-label">Plan Validity</label>
+                    <input type="date" class="form-control" formControlName="planAddedOn" id="planAddedOn"
+                        name="planAddedOn" readonly>
+
+                </div>
+
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="loanTypeId" class="form-label">ID of the Loan Type</label>
+                    <input type="number" class="form-control" id="loanTypeId" formControlName="loanTypeId"
+                        name="loanTypeId" readonly>
+
+                </div>
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="loanType" class="form-label">Loan Type</label>
+                    <input type="text" class="form-control" id="loanType" formControlName="loanType" name="loanType"
+                        readonly>
+
+                </div>
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="baseInterestRate" class="form-label">Base Interest Rate</label>
+                    <input type="number" class="form-control" id="baseInterestRate" formControlName="baseInterestRate"
+                        name="baseInterestRate" readonly>
+
+                </div>
+
+
+                <div class="d-grid gap-2 col-2 mx-auto">
+                    <button class="btn btn-success my-4" type="submit"
+                        [disabled]="updateLoanPlanForm.invalid">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- routerLink="/api/loanplans" -->
