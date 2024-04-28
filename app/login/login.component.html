@@ -1,0 +1,43 @@
+<div class="container mb-5 w-50">
+    <div class="row mb-5">
+        <div class="col mb-5">
+            <form class="form-control row g-3 needs-validation mb-5" [formGroup]="loginForm">
+                <h3><span class="badge text-bg-secondary bg-gradient col-md-6 offset-md-3 mt-4">Login</span>
+                </h3>
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" formControlName="username" name="username"
+                        placeholder="Enter username" required
+                        [ngClass]="{error:getControl('username').errors && getControl('username').touched}">
+                    <div *ngIf="getControl('username').errors && getControl('username')touched">
+                        <small class="text-secondary" *ngIf="getControl('username').errors?.['required']">
+                            User Name is required
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-md-8 offset-md-2">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" formControlName="password"
+                        placeholder="Enter Password" required
+                        [ngClass]="{error:getControl('password').errors && getControl('password').touched}">
+                    <div *ngIf="getControl('password').errors && getControl('password')touched">
+                        <small class="text-secondary" *ngIf="getControl('password').errors?.['required']">
+                            Password is required
+                        </small>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 col-2 mx-auto">
+                    <button class="btn btn-dark my-4" type="submit" (click)="onLogin()">Login</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- [disabled]="loginForm.invalid" -->
