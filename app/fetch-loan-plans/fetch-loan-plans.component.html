@@ -1,0 +1,44 @@
+<h3><span class="badge text-bg-secondary bg-gradient col-md-6 offset-md-3 mt-5">List of Loan Plans</span></h3>
+
+<div class="container mt-5 mb-5">
+    <table class="table table-responsive table-light table-bordered border-dark table-hover text-center">
+        <thead>
+            <tr class="table-secondary table-active text-white">
+                <th scope="col">Plan Id</th>
+                <th scope="col">Plan Name</th>
+                <th scope="col">Principle Amount</th>
+                <th scope="col">Tenure</th>
+                <th scope="col">Plan Validity</th>
+                <th scope="col">Plan Added On</th>
+                <th scope="col">Loan Type</th>
+                <th scope="col">Update Plan</th>
+                <th scope="col">View Plan</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let loanPlan of loanPlansArray">
+            <tr>
+                <td>{{ loanPlan.planId }}</td>
+                <td>{{ loanPlan.planName }}</td>
+                <td>{{ loanPlan.principleAmount | currency:'INR'}}</td>
+                <td>{{ loanPlan.tenure }}</td>
+                <td>{{ loanPlan.planValidity }}</td>
+                <td>{{ loanPlan.planAddedOn }}</td>
+                <td>{{ loanPlan.loanType }}</td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-success btn-sm"
+                            [routerLink]="['/api/updateloanplans',loanPlan.planId]"
+                            (click)="onUpdate(loanPlan.planId)">Update</button>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <button type="button" class="btn btn-warning btn-sm"
+                            [routerLink]="['/api/loanplans',loanPlan.planId]">View</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
